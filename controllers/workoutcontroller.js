@@ -13,7 +13,7 @@ router.get('/practice', validateSession, function(req, res)
 /****************
  ***LOG CREATE***
  *****************/
-router.post('/log/', validateSession, (req, res) => {
+router.post('/log', validateSession, (req, res) => {
     const logEntry = {
         description: req.body.log.description,
         definition: req.body.log.definition,
@@ -29,7 +29,7 @@ router.post('/log/', validateSession, (req, res) => {
 /* ******************
 ***GET ALL ENTRIES***
 ********************* */
-router.get("/log/", (req, res) => {
+router.get("/log", (req, res) => {
     // .findAll is a sequelize method to find all of the items
     Log.findAll()
     .then(logs => res.status(200).json(logs))
