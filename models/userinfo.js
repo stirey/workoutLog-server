@@ -1,5 +1,5 @@
-module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('userinfo', {
+module.exports =  (sequelize, DataTypes) =>{
+    const Userinfo = sequelize.define('userinfo', {
 
         dateOfBirth: {
             type: DataTypes.DATEONLY,
@@ -28,4 +28,5 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         },
     })
+    return Userinfo;
 }

@@ -10,7 +10,7 @@ const userinfo = require('./controllers/userinfocontroller')
 sequelize.sync();
 app.use(cors());
 app.use(express.json());
-app.use(require('./middleware/headers'))
+
 //here I am imorting the route object and storing it in a variable called workout
 
 
@@ -29,6 +29,7 @@ app.use('/user', user)
 ******************* */
 //anything below the middleware will require a token, anything above will not. This is useful for when multiple users want to see content or you want to restrict what certain users see/do
 // app.use(require('./middleware/validate-session'));
+app.use(require('./middleware/headers'))
 app.use('/workout', workout)
 app.use('/userinfo', userinfo)
 
