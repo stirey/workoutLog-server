@@ -1,15 +1,11 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('workout-log', 'postgres', 'password', {
+const database = new Sequelize(process.env.NAME, 'postgres', process.env.PASS, {
     host: 'localhost',
     dialect: 'postgres'
 });
 
-sequelize.authenticate().then(
-    function() {
-        console.log('Connected to workout-log postgres database');
-    },
-    function(err){
-        console.log(err);
-    }
-);
-module.exports = sequelize;
+database.authenticate()
+    .then(() => console.log('postgres db is connected'))
+    .catch(err=> console.log(err));
+ 
+    module.exports = database;

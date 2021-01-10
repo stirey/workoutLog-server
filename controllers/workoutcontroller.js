@@ -1,8 +1,7 @@
-const { Router } = require('express');
-let express = require('express');
-let router = express.Router();
+const router = require('express').Router();
 let validateSession = require('../middleware/validate-session');
 const Log = require('../db').import('../models/log');
+
 
 router.get('/practice', validateSession, function(req, res)
     {

@@ -1,19 +1,22 @@
 require("dotenv").config();
-let express = require('express');
-let app = express();
 let cors = require('cors')
+const express = require('express');
+const app = express();
 const sequelize = require('./db');
-app.use(cors());
-//here I am imorting the route object and storing it in a variable called workout
-const workout = require('./controllers/workoutcontroller')
 const user = require('./controllers/usercontroller')
-
+const workout = require('./controllers/workoutcontroller')
 //this ensures that we sync all defined models to the DB
 sequelize.sync();
+app.use(cors());
+app.use(express.json());
+app.use(require('./middleware/headers'))
+//here I am imorting the route object and storing it in a variable called workout
+
+
 //sequelize.sync({force: true})
 
 // this is a middleware function, must go above any routes!!!so the request can be jsonified and interpret body of data
-app.use(express.json());
+
 
 /* ****************
 ***EXPOSED ROUTE***
@@ -27,8 +30,4 @@ app.use('/user', user)
 // app.use(require('./middleware/validate-session'));
 app.use('/workout', workout)
 
-
-
-app.listen(4000, function(){
-    console.log('App is listening on port 4000');
-})
+app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}`));
