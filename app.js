@@ -5,6 +5,7 @@ const app = express();
 const sequelize = require('./db');
 const user = require('./controllers/usercontroller')
 const workout = require('./controllers/workoutcontroller')
+const userinfo = require('./controllers/userinfocontroller')
 //this ensures that we sync all defined models to the DB
 sequelize.sync();
 app.use(cors());
@@ -29,5 +30,6 @@ app.use('/user', user)
 //anything below the middleware will require a token, anything above will not. This is useful for when multiple users want to see content or you want to restrict what certain users see/do
 // app.use(require('./middleware/validate-session'));
 app.use('/workout', workout)
+app.use('/userinfo', userinfo)
 
 app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}`));

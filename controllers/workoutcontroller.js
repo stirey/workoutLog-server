@@ -49,7 +49,7 @@ router.get('/log/:id', validateSession, (req, res) => {
 
 /* ********************
 ***UPDATE LOG ENTRY****
-*********************** */
+************************/
 router.put('/log/:id', validateSession, function(req, res) {
     const updateLogEntry = {
         description: req.body.log.description,
@@ -65,7 +65,7 @@ router.put('/log/:id', validateSession, function(req, res) {
 
 /* ***********************
 ***DELETE ENTRY BY USER***
-************************** */
+***************************/
 router.delete("/log/:id", validateSession, function (req, res) {
     const query = { where: { id: req.params.id, owner: req.user.id }};
 
