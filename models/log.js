@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        owner: {
+        userId: {
             type: DataTypes.INTEGER,
         }
     

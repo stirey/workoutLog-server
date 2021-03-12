@@ -15,7 +15,7 @@ router.post('/create', function (req, res) {
     }).then(
         function createSuccess(user) {
 // token variable will store the token
-            const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '60d' });
+            const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: '7d' });
 
             res.json({
                 //left is name of object, right side is the parameter from function above

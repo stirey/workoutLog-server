@@ -3,11 +3,7 @@ let validateSession = require('../middleware/validate-session');
 const Log = require('../db').import('../models/log');
 
 
-router.get('/practice', validateSession, function(req, res)
-    {
-        res.send('Hey! This is a practice router!')
-    }
-)
+
 
 /****************
  ***LOG CREATE***
@@ -17,7 +13,7 @@ router.post('/log', validateSession, (req, res) => {
         description: req.body.log.description,
         definition: req.body.log.definition,
         result: req.body.log.result,
-        owner: req.user.id 
+        userId: req.user.id 
     }
     // create is a sequelize method that allows me to create an instance of the log model and send the logEntry object I created to the database
     Log.create(logEntry)

@@ -23,7 +23,7 @@ app.use(express.json());
 ***EXPOSED ROUTE***
 ****************** */
 app.use('/user', user)
-
+app.use('/userinfo', userinfo)
 /* ****************
 **PROTECTED ROUTE**
 ******************* */
@@ -31,6 +31,6 @@ app.use('/user', user)
 // app.use(require('./middleware/validate-session'));
 app.use(require('./middleware/headers'))
 app.use('/workout', workout)
-app.use('/userinfo', userinfo)
+
 
 app.listen(process.env.PORT, () => console.log(`App is listening on ${process.env.PORT}`));
